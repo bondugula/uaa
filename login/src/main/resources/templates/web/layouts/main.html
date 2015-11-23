@@ -3,33 +3,29 @@
       th:with="assetBaseUrl=${@environment.getProperty('assetBaseUrl','/resources/oss')},
                 pivotal=${@environment.getProperty('login.brand') == 'pivotal'},
                 isUaa=${T(org.cloudfoundry.identity.uaa.zone.IdentityZoneHolder).isUaa()},
-                zoneName=${T(org.cloudfoundry.identity.uaa.zone.IdentityZoneHolder).get().getName()},
-                companyName=(${pivotal} ? 'Pivotal Software' : 'CloudFoundry.org Foundation'),
-                copyright=('Copyright &#169; ' + ${companyName} + ', Inc. ' + ${#dates.year(#dates.createNow())}) + '. All Rights Reserved.'">
+                zoneName=${T(org.cloudfoundry.identity.uaa.zone.IdentityZoneHolder).get().getName()}">
 <head>
-    <title th:inline="text">[[${pivotal and isUaa ? 'Pivotal' : (isUaa ? 'Cloud Foundry' : zoneName)}]]</title>
-    <link href='/resources/pivotal/images/favicon.ico' th:href="@{${assetBaseUrl}+'/images/favicon.ico'}" rel='shortcut icon' />
+    <title>Predix</title>
     <meta charset='utf-8' />
-    <meta name='author' content='Pivotal Software, Inc' />
-    <meta name='copyright' th:content="|${copyright}|" />
+    <meta name='author' content='General Electric Company' />
+    <meta name='copyright' content='Copyright 2015 General Electric Company. All Rights Reserved.' />
     <meta name='robots' content='all' />
     <meta name='Description' content=""/>
     <meta name='keywords' content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="/vendor/font-awesome/css/font-awesome.min.css" th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
     <link href="/resources/pivotal/stylesheets/application.css" th:href="@{${assetBaseUrl}+'/stylesheets/application.css'}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="resources/sign-in-page.css" th:href="@{${assetBaseUrl}+'/stylesheets/sign-in-page.css'}" />
 </head>
-<body>
-<div class="content">
-    <div class="header" th:style="${isUaa} ? |background-image: url(@{${assetBaseUrl}+'/images/logo.png'});|" layout:fragment="page-header"></div>
+<body class="full-height">
+<div class="flex flex--center flex--middle full-height content">
     <div layout:fragment="page-content"></div>
     <div class="footer-spacer"></div>
 </div>
 <div class="footer">
     <div class="copyright"
-         th:inline="text"
-         th:title="|Version: ${@buildInfo.version}, Commit: ${@buildInfo.commitId}, Timestamp: ${@buildInfo.timestamp}, UAA: ${@buildInfo.uaaUrl}|">
-         [[${copyright}]]
+         th:utext="|&#169; ${#dates.year(#dates.createNow())} General Electric Company. All Rights Reserved.|">
+        &#169; 2014 Pivotal Software, Inc. All Rights Reserved.
     </div>
 </div>
 
