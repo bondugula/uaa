@@ -2,7 +2,10 @@ buildscript {
   apply from: file('shared_versions.gradle')
 
   repositories {
-    mavenCentral()
+    //mavenCentral()
+    maven {
+        url "http://repo1.maven.org/maven2"
+    }
     jcenter()
     maven {
       url 'http://repo.spring.io/plugins-release'
@@ -55,7 +58,10 @@ allprojects {
   apply plugin: 'eclipse-wtp'
 
   repositories {
-    mavenCentral()
+    //mavenCentral()
+	maven  {
+        url "http://repo1.maven.org/maven2"
+    }
   }
 
   ext {

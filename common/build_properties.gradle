@@ -4,7 +4,10 @@ import java.text.SimpleDateFormat
 
 buildscript {
   repositories {
-    mavenCentral()
+   // mavenCentral()
+	maven  {
+        url "http://repo1.maven.org/maven2"
+    }
   }
 
   dependencies {

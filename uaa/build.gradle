@@ -26,7 +26,10 @@ eclipse {
 
 repositories {
   mavenLocal()
-  mavenCentral()
+ // mavenCentral()
+  maven {
+        url "http://repo1.maven.org/maven2"
+    }
   maven {
    credentials {
      username 'svc-dsp-reader'
